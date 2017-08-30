@@ -1,0 +1,77 @@
+/* 默认样式 最后分离出来 */
+.clear{
+    overflow: hidden;
+}
+.right{
+    float:right;
+}
+.left{
+    float:left;
+}
+p{
+    margin:0;
+}
+/* 添加按钮 */
+.addBtn{
+    margin-top:16px;
+}
+/* 分页 */
+nav{
+    margin-right:20px;
+}
+/* 跳转 */
+.goto{
+    margin-top:20px;
+    margin-left:10px;
+}
+.gotoPage{
+    width:40px;
+    height:32px;
+    outline: none;
+    padding-left:6px;
+    border-radius:4px;
+    border: 1px solid #ddd;
+}
+.go{
+    height:32px; 
+    border-radius:4px;
+}
+/* 页数展示 */
+.pageShow{
+   display: inline-block;
+   margin-top: 28px;
+   margin-right: 30px;
+   color: #337ab7;
+}
+.pageShow>div{
+    display:inline;
+}
+.pageShow span{
+    color:purple;
+}
+/* .isPage a,.allPage a{
+    display: inline-block;
+    
+}  */
+/* 加载动画 */
+.loading {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 43px;
+    height: 11px;
+    background-image: url('../assets/img/loading.gif');
+  }
+/* 项目添加模态框 */
+#formAdd>* , #formEdit>*{
+    margin-bottom:10px;
+}
+#formAdd , #formEdit{
+    color:#999;
+}
+/* 三级联动 */
+.outer select{
+    height: 30px;
+}
