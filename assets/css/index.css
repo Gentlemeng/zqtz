@@ -54,7 +54,7 @@ nav{
     
 }  */
 /* 加载动画 */
-.loading {
+/* .loading {
     display: none;
     position: absolute;
     top: 50%;
@@ -63,7 +63,7 @@ nav{
     width: 43px;
     height: 11px;
     background-image: url('../assets/img/loading.gif');
-  }
+  } */
 /* 项目添加模态框 */
 #formAdd>* , #formEdit>*{
     margin-bottom:10px;

@@ -9,8 +9,8 @@
     <title>project</title>
 
     <!-- Bootstrap -->
-    <link href="./bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/index.css" rel="stylesheet">
+    <link href="./../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./../assets/css/index.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -166,12 +166,13 @@
                         </div>
                         <div class="modal-body">
                             <form action="javascript:;" id="formEdit">
+                                <input name="itemId" id="itemId" type="hidden" />
                                 项目名称
                                 <input name="itemName" class="form-control" placeholder="请输入项目名称" required="required" type="text" />
                                 项目单位
                                 <input name="itemUnit" class="form-control" placeholder="请输入项目单位" type="text" />
                                 <!-- 3更新频率 -->
-                                <input id="frequency" name="frequency" class="form-control" type="hidden" value="" /> 请选择更新频率
+                                <input id="edit_fre" name="frequency" class="form-control" type="hidden" value="" /> 请选择更新频率
                                 <select class="form-control frequency">
                                         <option>日</option>
                                         <option>周</option>
@@ -181,7 +182,7 @@
                                         <option>年</option>
                                     </select>
                                 <!-- 4数据类型 -->
-                                <input name="datatype" class="form-control datatype" type="hidden" /> 请选择数据类型
+                                <input  name="datatype" class="form-control datatype" type="hidden" /> 请选择数据类型
                                 <select id="edit_datatype" class="form-control"><!-- <option>假数据</option> --></select>
                                 <input name="indusName" class="form-control industry" type="hidden" />
                                 <!-- 5这里面是行业 -->
@@ -206,7 +207,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-primary" id="save">更新</button>
+                            <button type="button" class="btn btn-primary" id="update">更新</button>
                         </div>
                     </div>
                 </div>
@@ -221,12 +222,15 @@
             <td>{{$value.frequency}}</td>
             <td>{{$value.datatype}}</td>
             <td>{{$value.indusName}}</td>
+
+
+
             <td>{{$value.indexName}}</td>
             <td>{{$value.itemCode}}</td>
             <td>{{$value.areaName}}</td>
             <td>
                 <a href="javascript:;" editId="{{$value.itemId}}"class="showModal btn btn-info btn-xs">编 辑</a>
-                <a href="javascript::" class="delete btn btn-warning btn-xs">删 除</a>
+                <a href="javascript:;" class="delete btn btn-warning btn-xs">删 除</a>
             </td>
         </tr>
         {{/each}}
@@ -263,14 +267,15 @@
         {{/each}}
     </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="./js/jquery.min.js"></script>
+    <script src="./../node_modules/jquery/dist/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="./bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="./js/art-template/lib/template-web.js"></script>
+    <script src="./../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./../node_modules/art-template/lib/template-web.js"></script>
     
     <!-- <script src="./js/jQueryProvinces/js/area.js"></script>  
     <script src="./js/jQueryProvinces/js/select.js"></script>   -->
-    <script src="./js/index/index.js"></script>
+    <script src="./../assets/js/index/index.js"></script>
+    <script src="./../assets/js/unit.js"></script>
 </body>
 
 </html>
