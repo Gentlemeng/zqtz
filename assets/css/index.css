@@ -11,10 +11,24 @@
 p{
     margin:0;
 }
-/* 添加按钮 */
-.addBtn{
-    margin-top:16px;
+/* 搜索 */
+.search{
+    position:relative;
 }
+.search .searchTips{
+    height:330px;
+    position: absolute;
+    overflow-y: auto;
+    display:none;
+}
+.rm-marginRight{
+    margin-right:0px;
+    margin-bottom: 4px;
+}
+/* 添加按钮 */
+/* .addBtn{
+    margin-top:16px;
+} */
 /* 分页 */
 nav{
     margin-right:20px;

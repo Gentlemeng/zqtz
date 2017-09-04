@@ -89,6 +89,7 @@
             $.ajax(getCountyData)
         })
     }
+
     //2.计算json对象的长度
     function jsonLength(json) {
         var jsonLength = 0;
@@ -97,4 +98,6 @@
         }
         return jsonLength;
     }
+
+    
    

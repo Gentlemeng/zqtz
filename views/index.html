@@ -24,9 +24,28 @@
         <!-- header -->
         <div class="page-header">
             <h1>数据展示
-                <small>分页展示</small>
-                <button type="button" class="addBtn btn btn-default btn-sm pull-right" data-toggle="modal" data-target="#add">添加</button>
+                <small>分页展示</small>  
             </h1>
+            <div class="row rm-marginRight">
+                <div class="search col-lg-6">
+                    <div class="input-group">
+                        <input type="text" class="itemName form-control" placeholder="请输入项目名称">
+                        <span class="input-group-btn">
+                            <button class="searchBtn btn btn-default" type="button">搜索</button>
+                        </span>
+                    </div>
+                    <div class="searchTips list-group">
+                        <!-- <button type="button" class="list-group-item">Cras justo odiodsfsdfdsfdsfdsfdsfdsf</button>
+                        <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+                        <button type="button" class="list-group-item">Morbi leo risus</button>
+                        <button type="button" class="list-group-item">Porta ac consectetur ac</button>
+                        <button type="button" class="list-group-item">Vestibulum at eros</button> -->
+                    </div>
+                </div>
+                <button type="button" class="addBtn btn btn-default btn-sm pull-right" data-toggle="modal" data-target="#add">添加</button>
+                
+            </div>
+            <!-- /.row -->
         </div>
         <!-- 表格部分 -->
         <table class="table table-striped">
@@ -44,22 +63,7 @@
                 </tr>
             </thead>
             <!-- 数据展示在这里 -->
-            <tbody id="list">
-                <!-- <tr id="{{$value.itemId}}">
-                    <td>{{$value.itemName}}</td>
-                    <td>日</td>
-                    <td>假数据</td>
-                    <td>{{$value.}}</td>
-                    <td>{{$value.}}</td>
-                    <td>{{$value.}}</td>
-                    <td>{{$value.itemCode}}</td>
-                    <td>{{$value.areaName}}</td>
-                    <td>
-                        <a href="" class="btn btn-info btn-xs" data-toggle="modal" data-target="#edit">编 辑</a>
-                        <a href="javascript::" class="delete btn btn-warning btn-xs">删除</a>
-                    </td>
-                </tr> -->
-            </tbody>
+            <tbody id="list"></tbody>
         </table>
         <!-- 分页部分 -->
         <div class="Page clear">
@@ -112,8 +116,7 @@
                     <div class="modal-body">
                         <form action="javascript:;" id="formAdd">
                             项目名称
-                            <input name="itemName" class="form-control" placeholder="请输入项目名称" required="required" type="text" />
-                            项目单位
+                            <input name="itemName" class="form-control" placeholder="请输入项目名称" required="required" type="text" />                            项目单位
                             <input name="itemUnit" class="form-control" placeholder="请输入项目单位" type="text" />
                             <!-- 3更新频率 -->
                             <input id="frequency" name="frequency" class="form-control" type="hidden" value="" /> 请选择更新频率
@@ -158,22 +161,20 @@
         </div>
         <!-- 编辑模态框 -->
         <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-sm" role="document" style="width:600px">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">项目编辑</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form action="javascript:;" id="formEdit">
-                                <input name="itemId" id="itemId" type="hidden" />
-                                项目名称
-                                <input name="itemName" class="form-control" placeholder="请输入项目名称" required="required" type="text" />
-                                项目单位
-                                <input name="itemUnit" class="form-control" placeholder="请输入项目单位" type="text" />
-                                <!-- 3更新频率 -->
-                                <input id="edit_fre" name="frequency" class="form-control" type="hidden" value="" /> 请选择更新频率
-                                <select class="form-control frequency">
+            <div class="modal-dialog modal-sm" role="document" style="width:600px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">项目编辑</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="javascript:;" id="formEdit">
+                            <input name="itemId" id="itemId" type="hidden" /> 项目名称
+                            <input name="itemName" class="form-control" placeholder="请输入项目名称" required="required" type="text" />                            项目单位
+                            <input name="itemUnit" class="form-control" placeholder="请输入项目单位" type="text" />
+                            <!-- 3更新频率 -->
+                            <input id="edit_fre" name="frequency" class="form-control" type="hidden" value="" /> 请选择更新频率
+                            <select class="form-control frequency">
                                         <option>日</option>
                                         <option>周</option>
                                         <option>旬</option>
@@ -181,37 +182,37 @@
                                         <option>季</option>
                                         <option>年</option>
                                     </select>
-                                <!-- 4数据类型 -->
-                                <input  name="datatype" class="form-control datatype" type="hidden" /> 请选择数据类型
-                                <select id="edit_datatype" class="form-control"><!-- <option>假数据</option> --></select>
-                                <input name="indusName" class="form-control industry" type="hidden" />
-                                <!-- 5这里面是行业 -->
-                                请选择所属行业
-                                <select id="edit_indusName" class="form-control"><!-- <option>假数据</option> --></select>
-                                <!-- 6指标名称 -->
-                                <input name="indexName" class="form-control indexName" type="hidden" /> 请选择指标名称
-                                <select id="edit_indexName" class="form-control"><!-- <option>假数据</option> --></select>
-                                <!-- 7code -->
-                                <input name="itemCode" class="form-control code" placeholder="请输入code" type="text" />
-                                <!-- 8区域 -->
-                                <input name="areaName" class="form-control area" type="hidden" />
-                                <div class="outer">
-                                    <!-- 省（直辖市） -->
-                                    <select id="edit_province"><option>请选择</option></select>
-                                    <!-- 市 -->
-                                    <select id="edit_city"><option>请选择</option></select>
-                                    <!-- 县（区） -->
-                                    <select id="edit_county"><option>请选择</option></select>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-primary" id="update">更新</button>
-                        </div>
+                            <!-- 4数据类型 -->
+                            <input name="datatype" class="form-control datatype" type="hidden" /> 请选择数据类型
+                            <select id="edit_datatype" class="form-control"><!-- <option>假数据</option> --></select>
+                            <input name="indusName" class="form-control industry" type="hidden" />
+                            <!-- 5这里面是行业 -->
+                            请选择所属行业
+                            <select id="edit_indusName" class="form-control"><!-- <option>假数据</option> --></select>
+                            <!-- 6指标名称 -->
+                            <input name="indexName" class="form-control indexName" type="hidden" /> 请选择指标名称
+                            <select id="edit_indexName" class="form-control"><!-- <option>假数据</option> --></select>
+                            <!-- 7code -->
+                            <input name="itemCode" class="form-control code" placeholder="请输入code" type="text" />
+                            <!-- 8区域 -->
+                            <input name="areaName" class="form-control area" type="hidden" />
+                            <div class="outer">
+                                <!-- 省（直辖市） -->
+                                <select id="edit_province"><option>请选择</option></select>
+                                <!-- 市 -->
+                                <select id="edit_city"><option>请选择</option></select>
+                                <!-- 县（区） -->
+                                <select id="edit_county"><option>请选择</option></select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="update">更新</button>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
     <!-- 数据展示模板 -->
     <script id="data-list" type="text/html">
@@ -222,20 +223,17 @@
             <td>{{$value.frequency}}</td>
             <td>{{$value.datatype}}</td>
             <td>{{$value.indusName}}</td>
-
-
-
             <td>{{$value.indexName}}</td>
             <td>{{$value.itemCode}}</td>
             <td>{{$value.areaName}}</td>
             <td>
-                <a href="javascript:;" editId="{{$value.itemId}}"class="showModal btn btn-info btn-xs">编 辑</a>
+                <a href="javascript:;" editId="{{$value.itemId}}" class="showModal btn btn-info btn-xs">编 辑</a>
                 <a href="javascript:;" class="delete btn btn-warning btn-xs">删 除</a>
             </td>
         </tr>
         {{/each}}
     </script>
-    <!-- 添加数据模板 -->
+    <!-- 添加数据模板(添加/编辑) -->
     <script id="type-list" type="text/html">
         {{each data_list item}}
         <option typeId="{{item.datatypeId}}">{{item.datatypeName}}</option>
@@ -266,12 +264,17 @@
         <option countyId="{{item.areaId}}">{{item.areaName}}</option>
         {{/each}}
     </script>
+    <script id="search-tips" type="text/html">
+        {{each list}}
+        <button type="button" class="list-group-item" tipsId="{{$value.searchId}}">{{$value.searchName}}</button>
+        {{/each}}
+    </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="./../node_modules/jquery/dist/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="./../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./../node_modules/art-template/lib/template-web.js"></script>
-    
+
     <!-- <script src="./js/jQueryProvinces/js/area.js"></script>  
     <script src="./js/jQueryProvinces/js/select.js"></script>   -->
     <script src="./../assets/js/index/index.js"></script>

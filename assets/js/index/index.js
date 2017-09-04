@@ -3,145 +3,66 @@ $(function () {
     var pageNum = 1,
         pageSize = 10,
         endPage;
-    //页面初始加载请求数据
-    // $.ajax({
-    //     url: 'http://192.168.1.127:8905/showItem',
-    //     success: function (result) {
-    //         console.log(result);
-    //         var result = template('data-list', {
-    //             list: result
-    //         });
-    //         $('#list').html(result);
-    //     },
-    //     error: function (error) {
-    //         console.log(error)
-    //     }
-    // })
-
     //获取首页数据
-    var getIndexData = {
-        // url: 'http://192.168.1.127:8905/showItem',
-        url: 'http://192.168.1.127:8905/showItem',
-        data: {
-            pageNum: pageNum || 1,
-            pageSize: pageSize || 15
-        },
-        type: 'post',
-        // beforeSend: function () {
-        //     $('.loading').show();
-        // },
-        success: function (result) {
-            console.log(result);
-            var html = template('data-list', {
-                list: result.list
-            });
-            $('#list').html(html);
-            //计算尾页
-            endPage = Math.ceil(result.total / pageSize);
-            // console.log(endPage);
-            console.log(pageNum)
-            $('.isPage').text(pageNum)
-            $('.allPage').text(result.allPage)
-        },
-        error: function (error) {
-            console.log(error)
-        },
-        // complete: function () {
-        //     $('.loading').hide();
-        // }
-    };
-    $.ajax(getIndexData);
-
+    fuzzyGetHomePage({
+        pageNum:pageNum,
+        pageSize:pageSize,
+        searchId:searchId
+    });
     //点击首页
     $('.homePage').click(function () {
+        // searchCon=$('.itemName').val();
+        // console.log(searchCon);
         pageNum = 1;
-        $.ajax(getIndexData)
+            //模糊查询
+            fuzzyGetHomePage({
+                pageNum:pageNum,
+                pageSize:pageSize,
+                searchId:searchId
+            })
     })
 
     //点击上一页
     $('.previous').click(function () {
-
         if (pageNum == 1) {
             alert('当前页为首页')
             return false;
         } else {
             pageNum--;
         }
-        var getPreData = {
-            url: 'http://192.168.1.127:8905/showItem',
-            data: {
-                pageNum: pageNum || 1,
-                pageSize: pageSize || 15
-            },
-            success: function (result) {
-                // console.log(result);
-                var html = template('data-list', {
-                    list: result.list
-                });
-                $('#list').html(html);
-                $('.isPage').text(pageNum)
-                $('.allPage').text(result.allPage)
-            },
-            error: function (error) {
-                alert("请求错误")
-                console.log(error)
-            }
-        };
-        $.ajax(getPreData);
+        fuzzyGetHomePage({
+            pageNum:pageNum,
+            pageSize:pageSize,
+            searchId:searchId
+        })
     });
 
     //点击下一页
     $('.next').click(function () {
+        console.log(endPage);
+        console.log(pageNum)
         if (pageNum >= endPage) {
             alert('当前页为最后一页')
             return false;
         } else {
             pageNum++;
         }
-        var getNextData = {
-            url: 'http://192.168.1.127:8905/showItem',
-            data: {
-                pageNum: pageNum || 1,
-                pageSize: pageSize || 15
-            },
-            success: function (result) {
-                // console.log(result);
-                var html = template('data-list', {
-                    list: result.list
-                });
-                $('#list').html(html);
-                $('.isPage').text(pageNum)
-                $('.allPage').text(result.allPage)
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        };
-        $.ajax(getNextData);
+        fuzzyGetHomePage({
+            pageNum:pageNum,
+            pageSize:pageSize,
+            searchId:searchId
+            // searchName:searchCon
+        })
     });
 
     //点击尾页
     $('.end').click(function () {
         pageNum = endPage
-        var getEndData = {
-            url: 'http://192.168.1.127:8905/showItem',
-            data: {
-                pageNum: pageNum || 1,
-                pageSize: pageSize || 15
-            },
-            success: function (result) {
-                var html = template('data-list', {
-                    list: result.list
-                });
-                $('#list').html(html);
-                $('.isPage').text(pageNum)
-                $('.allPage').text(result.allPage)
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        }
-        $.ajax(getEndData);
+        fuzzyGetHomePage({
+            pageNum:pageNum,
+            pageSize:pageSize,
+            searchId:searchId
+        })
     })
     //点击跳转页
     $('.go').click(function () {
@@ -360,7 +281,7 @@ $(function () {
                                 });
                                 // console.log(city);
                                 // 渲染全部市
-                                $('#edit_city').html('<option>请选择</option>'+city)
+                                $('#edit_city').html('<option>请选择</option>' + city)
                             },
                             error: function () {
                                 console.log(error);
@@ -450,32 +371,159 @@ $(function () {
 
     })
 
-    //封装
-     //跳转到指定页
-     function skipByPageNum() {
+
+    //搜索框输入内容功能 
+    var preVal = '',
+        nowVal='',
+        searchId;
+    $('.itemName').keyup(function () {
+        searchId=undefined;
+        var nowVal = $(this).val();
+        if (!$.trim(nowVal)) {
+            $('.searchTips').hide();
+            return;
+        }
+        //键盘每次up一下就判断两次输入的内容，不一样时执行代码
+        else if ($.trim(preVal) != $.trim(nowVal)) {
+            preVal = nowVal
+            var getTipsCon = {
+                url: 'http://192.168.1.127:8905/tipFindItem',
+                data: {
+                    searchId: searchId,
+                    searchName: nowVal
+                },
+                success: function (result) {
+                    //数组格式
+                    console.log(result);
+                    if (result) {
+                        $('.searchTips').show();
+                        var search_tips = template('search-tips', {
+                            list: result
+                        });
+                        $('.searchTips').html(search_tips);
+
+                        //选中提示功能
+                        $('.searchTips').on('click', 'button', function () {
+
+                            var tipName = $(this).text();
+                            searchId = $(this).attr("tipsId")
+                            pageNum=1;
+                            // console.log($(this).text())
+                            $('.searchTips').hide();
+                            $('.itemName').val(tipName);
+
+                            fuzzyGetHomePage({
+                                pageNum:pageNum,
+                                pageSize:pageSize,
+                                searchId:searchId
+                            })
+                        })
+                    }
+
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            }
+            $.ajax(getTipsCon)
+        }
+    })
+
+    //搜索功能
+    $('.searchBtn').click(function () {
+        var searchCon = $(".itemName").val()
+        console.log(searchCon)
+        if (!$.trim(searchCon)) {
+            alert('搜索内容不能为空')
+            return
+        } else {
+            fuzzyGetHomePage({
+                pageNum:pageNum,
+                pageSize:pageSize,
+                searchId:searchId
+            });
+            $('.searchTips').hide();
+        }
+    })
+
+
+    //跳转到指定页
+    function skipByPageNum() {
         var pageNum = $('.gotoPage').val();
         var currentNum = $('.isPage').val();
-        var getSelData = {
-            url: 'http://192.168.1.127:8905/showItem',
+
+        fuzzyGetHomePage({
+            pageNum:pageNum||currentNum,
+            pageSize:pageSize,
+            searchId:searchId
+        });
+
+        // var getSelData = {
+        //     url: 'http://192.168.1.127:8905/findItem',
+        //     data: {
+        //         pageNum: pageNum || currentNum || 1,
+        //         pageSize: pageSize || 15,
+        //         searchId: searchId,
+        //         searchName: searchCon
+        //     },
+        //     success: function (result) {
+        //         var html = template('data-list', {
+        //             list: result.list
+        //         });
+        //         $('#list').html(html);
+        //         $('.isPage').text(pageNum)
+        //         $('.allPage').text(result.allPage)
+        //     },
+        //     error: function (error) {
+        //         console.log(error)
+        //     },
+        //     // complated: function () {
+        //     //     console.log()
+        //     // }
+        // }
+        // $.ajax(getSelData);
+    }
+    //模糊查询
+    function fuzzyGetHomePage(options){
+        // console.log(options.searchName);
+        var searchName=$('.itemName').val();
+        console.log(searchName)
+        // console.log(options.searchId);
+        //模糊查询
+        var getDataByFuzzy = {
+            url: 'http://192.168.1.127:8905/findItem',
             data: {
-                pageNum: pageNum || currentNum || 1,
-                pageSize: pageSize || 15
+                pageNum: options.pageNum || 1,
+                pageSize: options.pageSize || 15,
+                searchId: options.searchId,
+                searchName: searchName
             },
+            type: 'post',
+            // beforeSend: function () {
+            //     $('.loading').show();
+            // },
             success: function (result) {
+                // console.log(result);
                 var html = template('data-list', {
                     list: result.list
                 });
                 $('#list').html(html);
-                $('.isPage').text(pageNum)
+                //计算尾页
+                endPage = Math.ceil(result.total /options.pageSize);
+                console.log(endPage);
+                console.log(options.pageNum)
+                $('.isPage').text(options.pageNum)
                 $('.allPage').text(result.allPage)
             },
             error: function (error) {
                 console.log(error)
             },
-            // complated: function () {
-            //     console.log()
+            // complete: function () {
+            //     $('.loading').hide();
             // }
-        }
-        $.ajax(getSelData);
+        };
+        $.ajax(getDataByFuzzy);
     }
+
+    
 })
