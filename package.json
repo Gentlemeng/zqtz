@@ -12,6 +12,7 @@
   "dependencies": {
     "art-template": "^4.12.1",
     "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
     "jquery": "^1.12.4"
   }
 }

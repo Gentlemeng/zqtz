@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../assets/css/index.css">
+</head>
+
+<body>
+    <!-- 侧边栏 -->
+    <div class="aside">
+        <!-- 个人资料 -->
+        <!-- <div class="profile">
+            <div class="avatar img-circle">
+                <img src="">
+            </div>
+            <h4>测试测试</h4>
+        </div> -->
+        <!-- 导航菜单 -->
+        <div class="navs">
+            <ul class="list-unstyled">
+                <li>
+                    <a href="javascript:;">
+                        <i class="fa fa-home"></i>
+                        主页
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="active">
+                        <i class="fa fa-bell"></i>
+                        数据列表
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="fa fa-bell"></i>
+                        数据列表
+                        <i class="arrow fa fa-angle-right"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="fa fa-cog"></i>
+                        数据列表
+                        <i class="arrow fa fa-angle-right"></i>
+                    </a>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="javascript:;">
+                                 数据添加
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                数据列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                数据分类
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                数据专题
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="fa fa-bell"></i>
+                        数据管理
+                    </a>
+                </li>
+                <!-- <li>
+                    <a href="javascript:;">
+                        <i class="fa fa-cog"></i>
+                        系统设置
+                        <i class="arrow fa fa-angle-right"></i>
+                    </a>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="javascript:;">
+                                网站设置
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                 权限管理
+                            </a>
+                        </li>
+                    </ul>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <!-- 主体 -->
+    <div class="main">
+        <div class="container-fluid">
+            <!-- 头部 -->
+            <!-- <div class="header">
+                <nav class="navbar navbar-custom">
+                    <div class="navbar-header">
+                        <a href="javascript:;" class="navbar-brand">
+                            <i class="fa fa-navicon"></i>
+                        </a>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="javascript:;">
+                                <i class="fa fa-bell"></i>
+                                <span class="badge">8</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../index/settings.html">
+                                <i class="fa fa-user"></i>
+                                个人中心
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="fa fa-sign-out"></i>
+                                退出
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="fa fa-tasks"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div> -->
+            <!-- 客户列表 -->
+            <div class="body">
+                <!-- 面包屑 -->
+                <!-- <ol class="breadcrumb">
+                    <li><a href="javascript:;">用户管理</a></li>
+                    <li class="active">用户列表</li>
+                </ol> -->
+                <!-- <div class="container"> -->
+                <div class="panel panel-default user-list">
+                    <!-- <div class="panel-heading">
+                                    <h3 class="panel-title">用户列表</h3>
+                                </div> -->
+                    <!-- <div class="panel-body">
+                                    <form action="" class="form-inline">
+                                        <select name="" class="form-control input-sm">
+                                            <option value="">按年龄</option>
+                                        </select>
+                                        <select name="" class="form-control input-sm">
+                                            <option value="">按性别</option>
+                                        </select>
+                                        <select name="" class="form-control input-sm">
+                                            <option value="">按地区</option>
+                                        </select>
+                                        <select name="" class="form-control input-sm">
+                                            <option value="">按日期</option>
+                                        </select>
+                                        <button class="btn btn-success btn-sm">筛选</button>
+                                        <div class="input-group pull-right">
+                                            <input type="text" class="form-control input-sm">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-success btn-sm">搜索</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div> -->
+                    <!-- header -->
+                    <div class="page-header">
+                        <!-- 搜索和添加 -->
+                        <div class="row rm-marginRight">
+                            <div class="search col-lg-4">
+                                <div class="input-group">
+                                    <input type="text" class="itemName form-control" placeholder="请输入项目名称">
+                                    <span class="input-group-btn">
+                                            <button class="searchBtn btn btn-default" type="button">搜索</button>
+                                        </span>
+                                </div>
+                                <div class="searchTips list-group">
+                                    <!-- <button type="button" class="list-group-item">Cras justo odiodsfsdfdsfdsfdsfdsfdsf</button>
+                                        <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+                                        <button type="button" class="list-group-item">Morbi leo risus</button>
+                                        <button type="button" class="list-group-item">Porta ac consectetur ac</button>
+                                        <button type="button" class="list-group-item">Vestibulum at eros</button> -->
+                                </div>
+                            </div>
+                            <button type="button" class="addBtn btn btn-default btn-sm" data-toggle="modal" data-target="#add">添加</button>
+
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- 表格部分 -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>项目</th>
+                                <th>单位</th>
+                                <th>更新频率</th>
+                                <th>数据类型</th>
+                                <th>行业</th>
+                                <th>指标名称</th>
+                                <th>code</th>
+                                <th>区域</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <!-- 数据展示在这里 -->
+                        <tbody id="list"></tbody>
+                    </table>
+                    <!-- 分页部分 -->
+                    <div class="Page clear">
+                        <nav class="xh-pageBody pull-right" aria-label="Page navigation">
+                            <ul class="pagination pull-left">
+                                <li>
+                                    <a href="#" aria-label="Previous" class="homePage">
+                                        <span aria-hidden="true">首页</span>
+                                        </a>
+                                </li>
+                                <li>
+                                    <a href="#" aria-label="Previous" class="previous">
+                                            <span aria-hidden="true">上一页</span>
+                                            
+                                        </a>
+                                </li>
+                                <li><a href="#" class="current">当前页</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next" class="next">
+                                            <span aria-hidden="true">下一页</span>
+                                        </a>
+                                </li>
+                                <li>
+                                    <a href="#" aria-label="Next" class="end">
+                                            <span aria-hidden="true">尾页</span>
+                                        </a>
+                                </li>
+                            </ul>
+                            <div class="right goto">
+                                跳转到 <input class="gotoPage" type="text" value=""> 页
+                                <input class="go" type="button" value="go">
+                            </div>
+                        </nav>
+                        <div class="pageShow right">
+                            <div>
+                                当前页为<span class="isPage">  </span>页
+                            </div>
+                            <div>共<span class="allPage">  </span>页</div>
+                        </div>
+                    </div>
+                    <!-- 添加模态框 -->
+                    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog modal-sm" role="document" style="width:600px">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">项目添加</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="javascript:;" id="formAdd">
+                                        项目名称
+                                        <input name="itemName" class="form-control" placeholder="请输入项目名称" required="required" type="text" />                                        项目单位
+                                        <input name="itemUnit" class="form-control" placeholder="请输入项目单位" type="text" />
+                                        <!-- 3更新频率 -->
+                                        <input id="frequency" name="frequency" class="form-control" type="hidden" value="" />                                        请选择更新频率
+                                        <select class="form-control frequency">
+                                                    <option>日</option>
+                                                    <option>周</option>
+                                                    <option>旬</option>
+                                                    <option>月</option>
+                                                    <option>季</option>
+                                                    <option>年</option>
+                                                </select>
+                                        <!-- 4数据类型 -->
+                                        <input name="datatype" class="form-control datatype" type="hidden" /> 请选择数据类型
+                                        <select id="datatype" class="form-control"><!-- <option>假数据</option> --></select>
+                                        <input name="indusName" class="form-control industry" type="hidden" />
+                                        <!-- 5这里面是行业 -->
+                                        请选择所属行业
+                                        <select id="indusName" class="form-control"><!-- <option>假数据</option> --></select>
+                                        <!-- 6指标名称 -->
+                                        <input name="indexName" class="form-control indexName" type="hidden" /> 请选择指标名称
+                                        <select id="indexName" class="form-control"><!-- <option>假数据</option> --></select>
+                                        <!-- 7code -->
+                                        <input name="itemCode" class="form-control code" placeholder="请输入code" type="text" />
+                                        <!-- 8区域 -->
+                                        <input name="areaName" class="form-control area" type="hidden" />
+                                        <div class="outer">
+                                            <!-- 省（直辖市） -->
+                                            <select id="province"><option>请选择</option></select>
+                                            <!-- 市 -->
+                                            <select id="city"><option>请选择</option></select>
+                                            <!-- 县（区） -->
+                                            <select id="county"><option>请选择</option></select>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary" id="save">保存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 编辑模态框 -->
+                    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog modal-sm" role="document" style="width:600px">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">项目编辑</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="javascript:;" id="formEdit">
+                                        <input name="itemId" id="itemId" type="hidden" /> 项目名称
+                                        <input name="itemName" class="form-control" placeholder="请输入项目名称" required="required" type="text" />                                        项目单位
+                                        <input name="itemUnit" class="form-control" placeholder="请输入项目单位" type="text" />
+                                        <!-- 3更新频率 -->
+                                        <input id="edit_fre" name="frequency" class="form-control" type="hidden" value="" />                                        请选择更新频率
+                                        <select class="form-control frequency">
+                                                        <option>日</option>
+                                                        <option>周</option>
+                                                        <option>旬</option>
+                                                        <option>月</option>
+                                                        <option>季</option>
+                                                        <option>年</option>
+                                                    </select>
+                                        <!-- 4数据类型 -->
+                                        <input name="datatype" class="form-control datatype" type="hidden" /> 请选择数据类型
+                                        <select id="edit_datatype" class="form-control"><!-- <option>假数据</option> --></select>
+                                        <input name="indusName" class="form-control industry" type="hidden" />
+                                        <!-- 5这里面是行业 -->
+                                        请选择所属行业
+                                        <select id="edit_indusName" class="form-control"><!-- <option>假数据</option> --></select>
+                                        <!-- 6指标名称 -->
+                                        <input name="indexName" class="form-control indexName" type="hidden" /> 请选择指标名称
+                                        <select id="edit_indexName" class="form-control"><!-- <option>假数据</option> --></select>
+                                        <!-- 7code -->
+                                        <input name="itemCode" class="form-control code" placeholder="请输入code" type="text" />
+                                        <!-- 8区域 -->
+                                        <input name="areaName" class="form-control area" type="hidden" />
+                                        <div class="outer">
+                                            <!-- 省（直辖市） -->
+                                            <select id="edit_province"><option>请选择</option></select>
+                                            <!-- 市 -->
+                                            <select id="edit_city"><option>请选择</option></select>
+                                            <!-- 县（区） -->
+                                            <select id="edit_county"><option>请选择</option></select>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary" id="update">更新</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 数据展示模板 -->
+    <script id="data-list" type="text/html">
+        {{each list}}
+        <tr id="{{$value.itemId}}">
+            <td>{{$value.itemName}}</td>
+            <td>{{$value.itemUnit}}</td>
+            <td>{{$value.frequency}}</td>
+            <td>{{$value.datatype}}</td>
+            <td>{{$value.indusName}}</td>
+            <td>{{$value.indexName}}</td>
+            <td>{{$value.itemCode}}</td>
+            <td>{{$value.areaName}}</td>
+            <td>
+                <a href="javascript:;" editId="{{$value.itemId}}" class="showModal btn btn-info btn-xs">编 辑</a>
+                <a href="javascript:;" class="delete btn btn-warning btn-xs">删 除</a>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+    <!-- 添加数据模板(添加/编辑) -->
+    <script id="type-list" type="text/html">
+        {{each data_list item}}
+        <option typeId="{{item.datatypeId}}">{{item.datatypeName}}</option>
+        {{/each}}
+    </script>
+    <script id="indus-list" type="text/html">
+        {{each indus_list item}}
+        <option indusId="{{item.industryId}}">{{item.industryName}}</option>
+        {{/each}}
+    </script>
+    <script id="index-list" type="text/html">
+        {{each index_list item}}
+        <option indexId="{{item.indexId}}">{{item.indexCode}}</option>
+        {{/each}}
+    </script>
+    <script id="pro-list" type="text/html">
+        {{each pro_list item}}
+        <option proId="{{item.areaId}}">{{item.areaName}}</option>
+        {{/each}}
+    </script>
+    <script id="city-list" type="text/html">
+        {{each city_list item}}
+        <option cityId="{{item.areaId}}">{{item.areaName}}</option>
+        {{/each}}
+    </script>
+    <script id="county-list" type="text/html">
+        {{each county_list item}}
+        <option countyId="{{item.areaId}}">{{item.areaName}}</option>
+        {{/each}}
+    </script>
+    <script id="search-tips" type="text/html">
+        {{each list}}
+        <button type="button" class="list-group-item" tipsId="{{$value.searchId}}">{{$value.searchName}}</button>
+        {{/each}}
+    </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./../../node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./../../node_modules/art-template/lib/template-web.js"></script>
+
+    <!-- <script src="./js/jQueryProvinces/js/area.js"></script>  
+    <script src="./js/jQueryProvinces/js/select.js"></script>   -->
+    <script src="./../../assets/js/index/index.js"></script>
+    <script src="./../../assets/js/unit.js"></script>
+</body>
+
+</html>

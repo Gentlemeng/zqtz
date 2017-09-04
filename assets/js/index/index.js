@@ -1,4 +1,8 @@
 $(function () {
+    //点击任意地方，隐藏模态框
+    $('body').click(function(){
+        $('.searchTips').hide();
+    })
     //初始化页数，每页条数，尾页
     var pageNum = 1,
         pageSize = 10,
@@ -524,6 +528,17 @@ $(function () {
         };
         $.ajax(getDataByFuzzy);
     }
+
+    //点击展开收缩
+    $('.navs ul li ul li a').click(function(){
+        return false;
+    })
+    $('.navs').children('ul').children('li').children('a').click(function(event){
+        // event.preventDefault();
+        
+        $(this).next().toggle();
+        // return false;   
+    })
 
     
 })
